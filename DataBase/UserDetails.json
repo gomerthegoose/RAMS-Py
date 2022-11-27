@@ -1,6 +1,4 @@
-import json
-
-content=[
+[
     {
         "UserID" : 3,
         "StaffID" : 3,
@@ -13,7 +11,4 @@ content=[
         "Username": "ddd",
         "Password": "ddd"
     }
-  ]
-
-for item in content:
-    print("Name: {}\nEmail: {}\nID: {}\n".format(item['UserID'],item['StaffID'],item['Username']))
+]
