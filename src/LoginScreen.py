@@ -1,9 +1,10 @@
 import tkinter
-import tkinter.messagebox
+from tkinter import messagebox as msg
 import customtkinter
 import Cryptography
 import json
 import os
+import MainMenu
 
 class LoginScreen(customtkinter.CTk):
     
@@ -58,6 +59,7 @@ class LoginScreen(customtkinter.CTk):
         
     # - handles login request - 
     def HandleLogin(self, username, password):
+        
         cryptography = Cryptography.Cryptography()
         output = (False, "","","","")
         
@@ -66,6 +68,9 @@ class LoginScreen(customtkinter.CTk):
             if cryptography.DecryptString(user["Username"]) == username and cryptography.DecryptString(user["Password"]) == password:
                 print("Login Success")
                 output = (True, user["UserID"],user["StaffID"],user["Username"],user["Password"])
+                mainMenu = MainMenu.MainMenu()
+                mainMenu.mainloop()
+                
                 
         file.close()
         return output
@@ -78,7 +83,8 @@ class LoginScreen(customtkinter.CTk):
              
     # - login button callback -   
     def LoginButtonHandle(self):
+        
         if self.HandleLogin(self.username_Entry.get(), self.password_Entry.get())[0]:
-            print ("test")
+            pass
         else:
-            print("login fail")
+            msg.showerror("Login","Failed To Login",icon = "warning")

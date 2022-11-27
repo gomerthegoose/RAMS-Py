@@ -8,3 +8,11 @@ customtkinter.set_default_color_theme("green")  # Themes: blue (default), dark-b
 loginScreen = LoginScreen.LoginScreen()
 loginScreen.mainloop()
 
+class Main():
+    def __init__(self) -> None:
+        super().__init__()
+        
+        
+        
+    def closeLoginWindow():
+        loginScreen.destroy()
