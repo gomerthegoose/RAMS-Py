@@ -6,7 +6,7 @@ class Cryptography():
     def EncryptString(self,inputString):
         self.output = ""
         
-        for i in inputString:           
+        for i in str(inputString):           
             self.output += chr(ord(i) + 3)
             
         return self.output              
@@ -14,7 +14,7 @@ class Cryptography():
     def DecryptString(self,inputString):  
         self.output = ""
         
-        for i in inputString:           
+        for i in str(inputString):           
             self.output += chr(ord(i) - 3)
             
         return self.output       

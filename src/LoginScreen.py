@@ -41,7 +41,8 @@ class LoginScreen(customtkinter.CTk):
         # - Password entry field - 
         self.password_Entry = customtkinter.CTkEntry(master=self.Login_Frame,
                                             width=self.widgetsWidth,
-                                            placeholder_text="Password")
+                                            placeholder_text="Password",
+                                            show="*")
         self.password_Entry.place(relx=0.5, rely=0.45, anchor=customtkinter.CENTER)
         
         
@@ -62,16 +63,12 @@ class LoginScreen(customtkinter.CTk):
         
         cryptography = Cryptography.Cryptography()
         output = (False, "","","","")
-        
+
         file = open(self.userDetailsFileLocation)
         for user in json.load(file):
             if cryptography.DecryptString(user["Username"]) == username and cryptography.DecryptString(user["Password"]) == password:
-                print("Login Success")
-                output = (True, user["UserID"],user["StaffID"],user["Username"],user["Password"])
-                mainMenu = MainMenu.MainMenu()
-                mainMenu.mainloop()
-                
-                
+                output = (True, cryptography.DecryptString(user["UserID"]),cryptography.DecryptString(user["StaffID"]),cryptography.DecryptString(user["AccessLevel"]))
+                      
         file.close()
         return output
             
@@ -83,8 +80,15 @@ class LoginScreen(customtkinter.CTk):
              
     # - login button callback -   
     def LoginButtonHandle(self):
-        
-        if self.HandleLogin(self.username_Entry.get(), self.password_Entry.get())[0]:
-            pass
+        login = self.HandleLogin(self.username_Entry.get(), self.password_Entry.get())
+        if login[0]:
+            print("- Login Success -\n")
+            print("User ID:" , login[1])
+            print("Staff ID:" , login[2])
+            print("Access Level:" , login[3])
+            
+            mainMenu = MainMenu.MainMenu()
+            mainMenu.mainloop()
+            
         else:
-            msg.showerror("Login","Failed To Login",icon = "warning")
+            msg.showerror("Login","User not found")

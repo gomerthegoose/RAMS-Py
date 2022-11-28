@@ -3,12 +3,14 @@
         "UserID" : 3,
         "StaffID" : 3,
         "Username": "xvu",
-        "Password": "sdvv"
+        "Password": "sdvv",
+        "AccessLevel" : "dgplq"
     },
     {
         "UserID" : 4,
         "StaffID": 4,
         "Username": "ddd",
-        "Password": "ddd"
+        "Password": "ddd",
+        "AccessLevel" : "xvhu"
     }
 ]
