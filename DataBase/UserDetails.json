@@ -12,5 +12,12 @@
         "Username": "ddd",
         "Password": "ddd",
         "AccessLevel" : "xvhu"
+    },
+    {
+        "UserID" : 5,
+        "StaffID": 5,
+        "Username": "",
+        "Password": "",
+        "AccessLevel" : "dgplq"
     }
 ]
